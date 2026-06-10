@@ -16,7 +16,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-exchange = ccxt.binance()
+exchange = ccxt.binance({
+    'rateLimit': 2000,
+    'enableRateLimit': True
+})
 
 @app.get("/")
 async def root():
